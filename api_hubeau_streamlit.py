@@ -290,39 +290,39 @@ for k in range(len(df_general)):
 
 #Créaction d'un Excel de synthèse
         
-with pd.ExcelWriter('C:/Users/tp3682/Desktop/Hub_eau/Crues_'+station+'.xlsx',  engine='xlsxwriter') as writer:
-    j=0
-    for sheet_name, df in zip(title_list, df_list):
-        sheet_name=sheet_name.replace("/","_").split(" ")[0]+' '+sheet_name.replace("/","_").split(" ")[3]
-        df['Date'] = df['Date'].dt.tz_localize(None)
-        df.to_excel(writer, sheet_name, index=False)
-        workbook=writer.book
-        worksheet=writer.sheets[sheet_name]
-        worksheet.insert_image('K3', 'Évolution temporelle des débits', {'image_data':graph_list[j]})
-        worksheet.write('L33','Période de retour (années)')
-        worksheet.write('M33',T_list[j])
-        if type((Params_list[j]))==dict :
-            start_row = 35
-            start_col = 11  # Colonne K correspond à 11ème colonne
-
-            # Écrire les clés du dictionnaire dans la première colonne
-            for i, (key, value) in enumerate(Params_list[j].items(), start=start_row):
-                worksheet.write(i, start_col, key)  # Écrire la clé dans la colonne de départ
-                worksheet.write(i, start_col + 1, value)  # Écrire la valeur dans la colonne suivante
-
-            worksheet.insert_image('Q35', 'Évolution temporelle des débits', {'image_data':graph2_list[j]})
-            worksheet.write('L46','Hydrogramme unitaire')
-            worksheet.write('L47','t (jours)')
-            worksheet.write('M47','Q (m³/s)')
-            
-            start_row = 48
-            start_col = 11
-            # Écrire les clés du dictionnaire dans la première colonne
-            for i in range (len(Q_unitaire)):
-                worksheet.write(start_row+i, start_col, t_unitaire[i])
-                worksheet.write(start_row+i, start_col+1, Q_unitaire[i])
-            
-        j+=1
+#with pd.ExcelWriter('C:/Users/tp3682/Desktop/Hub_eau/Crues_'+station+'.xlsx',  engine='xlsxwriter') as writer:
+#    j=0
+#    for sheet_name, df in zip(title_list, df_list):
+#        sheet_name=sheet_name.replace("/","_").split(" ")[0]+' '+sheet_name.replace("/","_").split(" ")[3]
+#        df['Date'] = df['Date'].dt.tz_localize(None)
+#        df.to_excel(writer, sheet_name, index=False)
+#        workbook=writer.book
+#        worksheet=writer.sheets[sheet_name]
+#        worksheet.insert_image('K3', 'Évolution temporelle des débits', {'image_data':graph_list[j]})
+#        worksheet.write('L33','Période de retour (années)')
+#        worksheet.write('M33',T_list[j])
+#        if type((Params_list[j]))==dict :
+#            start_row = 35
+#            start_col = 11  # Colonne K correspond à 11ème colonne
+#
+#            # Écrire les clés du dictionnaire dans la première colonne
+#            for i, (key, value) in enumerate(Params_list[j].items(), start=start_row):
+#                worksheet.write(i, start_col, key)  # Écrire la clé dans la colonne de départ
+#                worksheet.write(i, start_col + 1, value)  # Écrire la valeur dans la colonne suivante
+#
+#            worksheet.insert_image('Q35', 'Évolution temporelle des débits', {'image_data':graph2_list[j]})
+#            worksheet.write('L46','Hydrogramme unitaire')
+#            worksheet.write('L47','t (jours)')
+#            worksheet.write('M47','Q (m³/s)')
+#            
+#            start_row = 48
+#            start_col = 11
+#            # Écrire les clés du dictionnaire dans la première colonne
+#            for i in range (len(Q_unitaire)):
+#                worksheet.write(start_row+i, start_col, t_unitaire[i])
+#                worksheet.write(start_row+i, start_col+1, Q_unitaire[i])
+#            
+#        j+=1
         
 #interface streamlit
 # Créez un menu déroulant pour sélectionner le DataFrame
