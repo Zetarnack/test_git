@@ -256,7 +256,7 @@ def params_hydrograph (df,Qbaseflow,S):
 # print('Rentrer la superficie du bassin versant associé à la station (km²)')
 # S=input()
 
-csv_file=r'C:/Users/tp3682/Desktop/Hub_eau/Q-X-(CRUCAL)_Gumbel_J4514010_11-07-1973_25-08-2024_1_non-glissant_X_pre-valide-et-valide_Echantillon.csv'
+csv_file='https://raw.githubusercontent.com/Zetarnack/test_git/master/Q-X-(CRUCAL)_Gumbel_J4514010_11-07-1973_25-08-2024_1_non-glissant_X_pre-valide-et-valide_Echantillon.csv'
 S=21 #Surface du BV en km²
 
 df_general=pd.read_csv(csv_file)
